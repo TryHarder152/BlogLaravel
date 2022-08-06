@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +20,17 @@ Route::group(['namespace' => 'Main'], function() {
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::group(['namespace' => 'Main'], function() {
-        Route::get('/', 'IndexController');
+        Route::get('/', 'IndexController')->name('admin.index');
     });
 
     Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function() {
-       Route::get('/', 'IndexController');
+       Route::get('/', 'IndexController')->name('admin.categories.index');
+       Route::get('/create', 'CreateController')->name('admin.categories.create');
+       Route::post('/create', 'StoreController')->name('admin.categories.store');
+       Route::get('/{category}', 'ShowController')->name('admin.categories.show');
+       Route::get('/{category}/edit', 'EditController')->name('admin.categories.edit');
+       Route::patch('/{category}', 'UpdateController')->name('admin.categories.update');
+       Route::delete('/{category}', 'DestroyController')->name('admin.categories.destroy');
     });
 });
 
