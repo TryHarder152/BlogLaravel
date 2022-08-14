@@ -26,4 +26,13 @@ class UpdateRequest extends FormRequest {
             'title' => 'string|min:3|max:30|required'
         ];
     }
+
+    public function messages() {
+        return [
+            'title.required' => 'This field must be filled in',
+            'title.string' => 'This field should be a string',
+            'title.min' => 'Minimum field value: 3',
+            'title.max' => 'Maximum field value: 30',
+        ];
+    }
 }

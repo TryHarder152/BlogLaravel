@@ -62,7 +62,6 @@
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="border-0 bg-transparent text-primary">Delete <i class="fas fa-minus-square text-danger"></i></button>
-
                                         </form>
                                     </td>
                                 </tr>
@@ -72,6 +71,7 @@
                 </div>
                 <!-- /.card-body -->
             </div>
+            <div>{{ $categories->withQueryString()->links() }}</div>
         </div>
     </div>
 @endsection

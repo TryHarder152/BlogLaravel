@@ -23,7 +23,16 @@ class StoreRequest extends FormRequest {
     public function rules()
     {
         return [
-            'title' => 'string|min:3|max:30|required'
+            'title' => 'required|string|min:3|max:30'
+        ];
+    }
+
+    public function messages() {
+        return [
+            'title.required' => 'This field must be filled in',
+            'title.string' => 'This field should be a string',
+            'title.min' => 'Minimum field value: 3',
+            'title.max' => 'Maximum field value: 30',
         ];
     }
 }
